@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>htpq — Supporto e informazioni</title>
+  <meta name="description" content="Sito ufficiale htpq — informazioni e contatti." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#">htpq</a>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">Info</a>
+        <a href="#contact">Contatti</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>Benvenuto su htpq</h1>
+        <p>Sito informativo e canale ufficiale di contatto.</p>
+        <a class="btn" href="#contact">Contattaci</a>
+      </div>
+    </section>
+
+    <section id="about" class="container content-section">
+      <h2>Informazioni</h2>
+      <p>Questo sito è gestito dall'account GitHub <strong>htpq</strong>. Non apriamo link o file inviati dagli utenti — leggi la sezione contatti.</p>
+    </section>
+
+    <section id="contact" class="container content-section">
+      <h2>Contatti</h2>
+      <p>Per assistenza scrivi a: <strong>htpqquestion@gmail.com</strong></p>
+      <p><strong>IMPORTANTE:</strong> NON inviare link né allegati. Invia solo testo chiaro con:
+      - Oggetto: "Supporto htpq"
+      - Nome e descrizione del problema (nessun link, nessun file)
+      </p>
+
+      <form id="contact-form" action="#" novalidate>
+        <label>Nome<input type="text" name="name" id="name" required></label>
+        <label>Email<input type="email" name="email" id="email" required></label>
+        <label>Messaggio<textarea name="message" id="message" rows="5" required></textarea></label>
+        <button type="submit" class="btn">Invia (apre client mail)</button>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> htpq</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        status.textContent = 'Apro il client mail...';
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        if(!name || !email || !message){
+          status.textContent = 'Compila tutti i campi.';
+          return;
+        }
+        const mailto = `mailto:htpqquestion@gmail.com?subject=${encodeURIComponent('Supporto htpq - ' + name)}&body=${encodeURIComponent(message + '\n\nDa: ' + name + ' — ' + email)}`;
+        window.location.href = mailto;
+      });
+    });
+  </script>
+</body>
+</html>
