@@ -1,0 +1,46 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln
+*.swp
+
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Build / caches / logs
+dist/
+build/
+.cache/
+coverage/
+*.log
+*.tmp
+*.bak
+
+# ActionScript / Flash
+*.swf
+*.fla
+*.swc
+
+# AL / Business Central (outputs)
+*.app
+*.app.json
+.alpackages/
+bin/
+obj/
